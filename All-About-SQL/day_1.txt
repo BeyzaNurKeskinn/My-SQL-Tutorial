@@ -1,0 +1,40 @@
+char
+Unicode’u desteklemeyip char(n) şeklinde kullanılırlar. 8000 karaktere kadar değer alabilirler.Belirtilenden(n) az karakter girilse dahi giriş
+yapılan boyut kadar yer kaplar.Veri giriş boyutları benzer,sabit olan veri kümelerinde kullanılması önerilir
+▸ nchar
+Unicode(uluslararası karakter setini,tanımlı tüm alfabeleri içerir)destekler.Chardan farklı olarak maksimum 4000 karaktere kadar değer
+alabilir.
+▸ varchar
+Chardan farklı olarak verinin boyutu kadar yere kaplar. 8000 karaktere kadar depolama yapar.Birbirinden farklı uzunlukta veri girişi
+yapılacağı zaman kullanılması önerilir. varchar(MAX) kullanımı ile 2GB’a kadar depolama yapılabilir.
+▸ nvarchar
+Verinin boyutu kadar yer kaplar. Varchardan farklı olarak unicode’u destekler.4000 karaktere kadar değer alabilir.
+▸ text
+Belirtilenden az değer girilse bile boyutu kadar yer kaplar.2GB’a kadar metinsel veri depolar.Unicode’u desteklemez.
+▸ ntext
+Text’den farklı olarak girilen karakter boyutu kadar yer kaplar ve unicode’u destekler.
+
+SELECT
+▸ SELECT * FROM tablo1
+▸ SELECT alan1, alan2 FROM tablo1
+
+DISTINCT
+▸ SELECT DISTINCT alan1 FROM tablo1
+▸ SELECT DISTINCT alan1, alan2 FROM tablo1
+
+ORDER BY
+▸ SELECT * FROM tablo1 ORDER BY alan1
+▸ SELECT * FROM tablo1 ORDER BY alan1 ASC
+▸ SELECT * FROM tablo1 ORDER BY alan1 DESC
+▸ SELECT alan1, alan2 FROM tablo1 ORDER BY alan1, alan2
+▸ SELECT alan1, alan2 FROM tablo1 ORDER BY alan1 ASC, alan2 DESC
+
+WHERE
+▸ SELECT * FROM tablo1 WHERE alan1=‘deger1’
+▸ SELECT * FROM tablo1 WHERE alan1=deger1
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan1=‘deger1’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan3=deger1
+
+AND
+▸ SELECT * FROM tablo1 WHERE alan1=‘deger1’ AND alan2=‘deger2’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan1=deger1 AND alan3=‘deger3’

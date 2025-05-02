@@ -1,0 +1,78 @@
+WHERE
+▸ SELECT * FROM tablo1 WHERE alan1=‘deger1’
+▸ SELECT * FROM tablo1 WHERE alan1=deger1
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan1=‘deger1’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan3=deger1
+
+NOT
+▸ SELECT * FROM tablo1 WHERE NOT alan1=‘deger1’
+▸ SELECT * FROM tablo1 WHERE NOT alan1=deger1
+▸ SELECT alan1, alan2 FROM tablo1 WHERE NOT alan1=‘deger1’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE NOT alan1=deger1
+
+AND
+▸ SELECT * FROM tablo1 WHERE alan1=‘deger1’ AND alan2=‘deger2’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan1=deger1 AND alan3=‘deger3’
+
+OR
+▸ SELECT * FROM tablo1 WHERE alan1=‘deger1’ OR alan2=‘deger2’
+▸ SELECT alan1, alan2 FROM tablo1 WHERE alan1=deger1 OR alan3=‘deger3’
+
+LIKE
+▸ SELECT * FROM tablo1 WHERE alan1 LIKE ‘A%’
+▸ SELECT * FROM tablo1 WHERE alan1 LIKE ‘%A’
+▸ SELECT * FROM tablo1 WHERE alan1 LIKE ‘%A%’
+
+IN
+▸ SELECT * FROM tablo1 WHERE alan1=deger1 AND alan2=deger2
+▸ SELECT * FROM tablo1 WHERE alan1 IN (deger1, deger2)
+▸ SELECT * FROM tablo1 WHERE alan1 IN (‘deger1’, ‘deger2’, ‘deger3’)
+
+BETWEEN
+▸ SELECT * FROM tablo1 WHERE alan1 BETWEEN deger1 AND deger2
+▸ SELECT * FROM tablo1 WHERE alan1 BETWEEN ‘deger1’ AND ‘deger2’
+
+IS NULL
+▸ SELECT * FROM tablo1 WHERE alan1 IS NULL
+▸ SELECT alan1,alan2 FROM tablo1 WHERE alan1 IS NULL
+
+IS NOT NULL
+▸ SELECT * FROM tablo1 WHERE alan1 IS NOT NULL
+▸ SELECT alan1,alan2 FROM tablo1 WHERE alan1 IS NOT NULL
+
+INSERT
+▸ INSERT INTO tablo1 (alan1,alan2) VALUES(‘deger1’,deger2)
+▸ INSERT INTO tablo1 (alan1,alan2,alan3) VALUES(‘deger1’,deger2, GETDATE())
+
+UPDATE
+▸ UPDATE tablo1 SET alan1=deger1
+▸ UPDATE tablo1 SET alan1=‘deger1’, alan2=deger2
+▸ UPDATE tablo1 SET alan1=‘deger2’ WHERE alan1=deger1
+▸ UPDATE tablo1 SET alan1=‘deger1’, alan2=deger2 WHERE alan3=deger3
+
+DELETE
+▸ DELETE tablo1
+▸ DELETE tablo1 WHERE alan1=deger1
+▸ DELETE tablo1 WHERE alan1=deger1 AND alan2=‘deger2’
+
+NSERT INTO
+▸ Bir tablodan diğer bir tabloya tüm kolonları kopyalama:
+INSERT INTO tablo2
+SELECT * FROM tablo1
+WHERE koşullar;
+▸ Bir tablodan diğer bir tabloya bazı kolonları kopyalama:
+INSERT INTO tablo2 (kolon1, kolon2, kolon3, ...)
+SELECT kolon1, kolon2, kolon3, ...
+FROM tablo1
+WHERE koşullar;
+
+
+WHERE KULLANARAK
+▸ SELECT a.,b.
+FROM tablo1 a, tablo2 b
+WHERE a.id = b.id
+
+INNER JOIN
+▸ SELECT a.,b.
+FROM tablo1 a INNER JOIN tablo2 b
+ON a.id=b.id

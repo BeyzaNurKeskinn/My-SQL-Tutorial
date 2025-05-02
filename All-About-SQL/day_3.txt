@@ -1,0 +1,215 @@
+SELECT a.,b.
+FROM tablo1 a INNER JOIN tablo2 b
+ON a.id=b.id
+
+SELECT a.,b.
+FROM tablo1 a LEFT JOIN tablo2 b
+ON a.id=b.id
+
+SELECT a.,b.
+FROM tablo1 a RIGHT JOIN tablo2 b
+ON a.id=b.id
+
+SELECT a.,b.
+FROM tablo1 a FULL OUTER JOIN tablo2 b
+ON a.id=b.id
+
+SELECT alan1,alan2,alan3 FROM tablo1
+UNION
+SELECT alan1,alan2,alan3 FROM tablo2
+
+SELECT alan1,alan2,alan3 FROM tablo1
+UNION ALL
+SELECT alan1,alan2,alan3 FROM tablo2
+
+CHARINDEX
+▸ SELECT CHARINDEX('A','KAITEK AKADEMİ')
+▸ 2
+▸ SELECT CHARINDEX('A','KAITEK AKADEMİ’,2)
+▸ 8
+▸ SELECT CHARINDEX('A','KAITEK AKADEMİ’,3)
+▸ 9
+
+CONCAT
+▸ SELECT CONCAT(‘KAITEK','AKADEMİ')
+▸ 'KAITEKAKADEMI'
+▸ SELECT CONCAT('KAITEK',' AKADEMİ’)
+▸ 'KAITEK AKADEMI'
+▸ SELECT CONCAT('KAITEK',' ‘,'AKADEMİ')
+▸ 'KAITEK AKADEMI'
+
+STR
+▸ SELECT STR(65)
+▸ ' 65'
+
+LEN
+▸ SELECT LEN(‘KAITEK')
+▸ 6
+
+LOWER
+▸ SELECT LOWER(‘KAITEK')
+▸ 'kaitek'
+
+UPPER
+▸ SELECT UPPER(‘kaitek')
+▸ 'KAITEK'
+
+LEFT
+▸ SELECT LEFT(‘KAITEK',3)
+▸ 'KAI'
+
+RIGHT
+▸ SELECT RIGHT(‘KAITEK',3)
+▸ ‘TEK'
+
+LTRIM
+▸ SELECT LTRIM(' KAITEK ‘)
+▸ 'KAITEK '
+
+RTRIM
+▸ SELECT RTRIM(' KAITEK ‘)
+▸ ' KAITEK'
+
+TRIM
+▸ SELECT TRIM(' KAITEK ‘)
+▸ 'KAITEK'
+
+STRING_SPLIT
+▸ SELECT * FROM STRING_SPLIT('KAITEK AKADEMİ',' ‘)
+▸ ’KAITEK’
+▸ ‘AKADEMİ’
+
+REPLACE
+▸ SELECT REPLACE('KAITEK AKADEMI’,'A','E')
+▸ 'KEITEK EKEDEMI'
+
+REVERSE
+▸ SELECT REVERSE('KAITEK AKADEMI’)
+▸ 'IMEDAKA KETIAK'
+
+GETDATE
+▸ SELECT GETDATE()
+▸ '2025-04-26 08:15:26.420'
+
+DAY
+▸ SELECT DAY(GETDATE())
+▸ 26
+
+MONTH
+▸ SELECT MONTH(GETDATE())
+▸ 4
+
+YEAR
+▸ SELECT YEAR(GETDATE())
+▸ 2025
+
+DATEADD
+▸ DATEADD(interval, number, date)
+▸ year, yyyy, yy = Year
+▸ quarter, qq, q = Quarter
+▸ month, mm, m = month
+▸ dayofyear, dy, y = Day of the year
+▸ day, dd, d = Day
+▸ week, ww, wk = Week
+▸ weekday, dw, w = Weekday
+▸ hour, hh = hour
+▸ minute, mi, n = Minute
+▸ second, ss, s = Second
+▸ millisecond, ms = Millisecond
+
+DATEADD - ÖRNEKLER
+▸ SELECT DATEADD(year, 1, '2017/08/25') AS DateAdd;
+▸ SELECT DATEADD(month, 2, '2017/08/25') AS DateAdd;
+▸ SELECT DATEADD(month, -2, '2017/08/25') AS DateAdd;
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+DATEDIFF
+▸ DATEDIFF(interval, date1, date2)
+▸ year, yyyy, yy = Year
+▸ quarter, qq, q = Quarter
+▸ month, mm, m = month
+▸ dayofyear = Day of the year
+▸ day, dy, y = Day
+▸ week, ww, wk = Week
+▸ weekday, dw, w = Weekday
+▸ hour, hh = hour
+▸ minute, mi, n = Minute
+▸ second, ss, s = Second
+▸ millisecond, ms = Millisecond
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+DATEDIFF - ÖRNEKLER
+▸ SELECT DATEDIFF(year, '2017/08/25', '2011/08/25') AS DateDiff;
+▸ SELECT DATEDIFF(month, '2017/08/25', '2011/08/25') AS DateDiff;
+▸ SELECT DATEDIFF(hour, '2017/08/25 07:00', '2017/08/25 12:45') AS DateDiff;
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+DATEPART
+▸ DATEPART(interval, date)
+▸ year, yyyy, yy = Year
+▸ quarter, qq, q = Quarter
+▸ month, mm, m = month
+▸ dayofyear, dy, y = Day of the year
+▸ day, dd, d = Day of the month
+▸ week, ww, wk = Week
+▸ weekday, dw, w = Weekday
+▸ hour, hh = hour
+▸ minute, mi, n = Minute
+▸ second, ss, s = Second
+▸ millisecond, ms = Millisecond
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+DATEPART - ÖRNEKLER
+▸ SELECT DATEPART(year, '2017/08/25') AS DatePartInt;
+▸ SELECT DATEPART(yy, '2017/08/25') AS DatePartInt;
+▸ SELECT DATEPART(month, '2017/08/25') AS DatePartInt;
+▸ SELECT DATEPART(hour, '2017/08/25 08:36') AS DatePartInt;
+▸ SELECT DATEPART(minute, '2017/08/25 08:36') AS DatePartInt;
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+CASE - ÖRNEKLER
+▸ SELECT OrderID, Quantity,
+CASE
+WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+WHEN Quantity = 30 THEN 'The quantity is 30'
+ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+▸ SELECT CustomerName, City, Country FROM Customers
+ORDER BY
+(CASE
+WHEN City IS NULL THEN Country
+ELSE City
+END);
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+CAST - DATETIME
+▸ SELECT GETDATE()
+▸ '2025-04-26 08:15:26.420'
+▸ SELECT CAST(GETDATE() AS DATE)
+▸ '2025-04-26'
+▸ SELECT CAST(GETDATE() AS TIME)
+▸ '08:15:26.42'
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+CAST - NUMERIC
+▸ SELECT CAST(25.65 AS INT)
+▸ 25
+▸ SELECT CAST(25 AS DECIMAL(18))
+▸ 25
+▸ SELECT CAST(25 AS DECIMAL(18,2))
+▸ 25.00
+▸ SELECT CAST(25 AS DECIMAL(18,3))
+▸ 25.000
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+NULLIF
+▸ NULLIF(deger1, deger2)
+▸ Eğer 2 değer aynıysa null değilse deger1
+
+KAITEK AKADEMİ - SQL EĞİTİMİ
+CAST - STRING
+▸ SELECT CAST('KAITEK' AS CHAR(10))
+▸ 'KAITEK '
+▸ SELECT CAST('KAITEK' AS VARCHAR(10))
+▸ 'KAITEK'
