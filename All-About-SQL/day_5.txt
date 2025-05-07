@@ -1,0 +1,92 @@
+BİRİNCİL ANAHTAR (PRIMARY KEY)
+▸ CREATE TABLE Persons (
+ID int NOT NULL PRIMARY KEY,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Age int
+);
+▸ CREATE TABLE Persons (
+ID int NOT NULL,
+LastName varchar(255) NOT NULL,
+FirstName varchar(255),
+Age int,
+CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);         
+
+
+
+
+İKİNCİL ANAHTAR (SECONDARY KEY)
+▸ İndeksler, veritabanından verileri normalden daha hızlı almak için kullanılır.
+Kullanıcılar indeksleri göremez, yalnızca aramaları/sorgulamaları hızlandırmak
+için kullanılırlar.
+▸ İndeksleri olan bir tabloyu güncellemek, indeksi olmayan bir tabloyu
+güncellemekten daha fazla zaman alır. Çünkü indeksler de güncellenmesi
+gerekir. Bu nedenle, yalnızca sık sık aranacak sütunlarda dizin oluşturulur.
+
+
+
+İKİNCİL ANAHTAR (SECONDARY KEY)
+▸ CREATE INDEX indeks1
+ON tablo1 (alan1, alan2);
+▸ CREATE UNIQUE INDEX indeks1
+ON tablo1 (alan1, alan2);
+▸ DROP INDEX table1.indeks1;
+▸ REBUILD INDEX
+
+
+
+
+YABANCI ANAHTAR (FOREIGN KEY)
+▸ FOREIGN KEY kısıtlaması, tablolar arasındaki bağlantıları yok edecek eylemleri
+önlemek için kullanılır.
+▸ FOREIGN KEY, bir tabloda bulunan ve başka bir tablodaki PRIMARY KEY'e
+başvuran bir alandır (veya alan koleksiyonudur).
+▸ Yabancı anahtara sahip tabloya alt tablo, birincil anahtara sahip tabloya ise
+başvurulan veya üst tablo denir.
+▸ FOREIGN KEY kısıtlaması, yabancı anahtar sütununa geçersiz verilerin eklenmesini
+engeller, çünkü bu verilerin üst tabloda bulunan değerlerden biri olması gerekir.
+
+
+
+İNDEKSLERDE BAKIM İŞLEMLERİ reorganizde kalmısız tekrar burayı anlatacagım ama yazayım burayada
+
+İNDEKSLERDE BAKIM İŞLEMLERİ
+▸ İndekslerdeki durumu görüntüleme
+▸ İndeksleri tekrar organize etme (REORGANIZE)
+▸ İndeksleri tekrar oluşturma (REBUILD)
+
+İNDEKSLERDEKİ DURUMU GÖRÜNTÜLEME
+▸ SELECT OBJECT_SCHEMA_NAME(ips.object_id) AS schema_name,
+OBJECT_NAME(ips.object_id) AS object_name,
+i.name AS index_name,
+i.type_desc AS index_type,
+ips.avg_fragmentation_in_percent,
+ips.avg_page_space_used_in_percent,
+ips.page_count,
+ips.alloc_unit_type_desc
+FROM sys.dm_db_index_physical_stats(DB_ID(), default, default, default, 'SAMPLED') AS ips
+INNER JOIN sys.indexes AS i
+ON ips.object_id = i.object_id AND ips.index_id = i.index_id
+ORDER BY page_count DESC;
+
+bu sorguyu kaydedin cok işine yarar
+
+İNDEKSLERİ TEKRAR ORGANİZE ETME (REORGANIZE)
+▸ ALTER INDEX indeks1 ON tablo1 REORGANIZE;
+▸ ALTER INDEX IX_Employee_OrganizationalLevel_OrganizationalNode
+ON HumanResources.Employee
+REORGANIZE;
+▸ ALTER INDEX ALL ON tablo1 REORGANIZE;
+▸ ALTER INDEX ALL ON HumanResources.Employee REORGANIZE;
+
+İNDEKSLERİ TEKRAR OLUŞTURMA (REBUILD)
+▸ ALTER INDEX indeks1 ON tablo1 REBUILD;
+▸ ALTER INDEX PK_Employee_BusinessEntityID ON HumanResources.Employee
+REBUILD;
+▸ ALTER INDEX ALL ON tablo1
+REBUILD WITH (FILLFACTOR = 80, SORT_IN_TEMPDB = ON,
+STATISTICS_NORECOMPUTE = ON);
+▸ ALTER INDEX ALL ON Production.Product
+REBUILD WITH (FILLFACTOR = 80, SORT_IN_TEMPDB = ON,
+STATISTICS_NORECOMPUTE = ON);
