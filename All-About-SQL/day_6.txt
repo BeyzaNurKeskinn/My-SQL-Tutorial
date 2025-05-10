@@ -1,0 +1,5 @@
+BİRİNCİL ANAHTAR (PRIMARY KEY)
+▸ PRIMARY KEY kısıtlaması, bir tablodaki her kaydı benzersiz şekilde tanımlar.
+▸ Birincil anahtarlar BENZERSİZ değerler içermelidir ve NULL değerler içeremez.
+▸ Bir tabloda yalnızca BİR birincil anahtar bulunabilir; ve tabloda, bu birincil
+anahtar tek veya birden fazla sütundan (alandan) oluşabilir.
