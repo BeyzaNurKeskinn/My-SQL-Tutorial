@@ -140,3 +140,101 @@ JSON_VALUE(FormData,'$.maas') AS Maaş
 
 FROM Ogrenciler
 WHERE JSON_VALUE(FormData,'$.adi') ='Adi1'
+
+
+
+-----------------------
+
+
+--{
+--"adi": "Adi1",
+--"soyadi": "Soyad1",
+--"maas" : 1000
+--}
+
+SELECT 
+*,
+JSON_VALUE(FormData,'$.adi') AS Adı,
+JSON_VALUE(FormData,'$.soyadi') AS Soyadı,
+JSON_VALUE(FormData,'$.maas') AS Maaş,
+JSON_VALUE(FormData,'$.telefonlar[0]') AS Telefon1,
+JSON_VALUE(FormData,'$.telefonlar[1]') AS Telefon2,
+JSON_VALUE(FormData,'$.adresler[0].satir1') AS Adres1Satir1,
+JSON_VALUE(FormData,'$.adresler[0].satir2') AS Adres1Satir2,
+JSON_VALUE(FormData,'$.adresler[0].postakodu') AS Adres1PostaKodu,
+JSON_VALUE(FormData,'$.adresler[0].ilce') AS Adres1İlçe,
+JSON_VALUE(FormData,'$.adresler[0].il') AS Adres1İl,
+JSON_VALUE(FormData,'$.adresler[1].satir1') AS Adres2Satir1,
+JSON_VALUE(FormData,'$.adresler[1].satir2') AS Adres2Satir2,
+JSON_VALUE(FormData,'$.adresler[1].postakodu') AS Adres2PostaKodu,
+JSON_VALUE(FormData,'$.adresler[1].ilce') AS Adres2İlçe,
+JSON_VALUE(FormData,'$.adresler[1].il') AS Adres2İl
+FROM Ogrenciler
+
+
+--------------------
+
+
+--{
+--"adi": "Adi1",
+--"soyadi": "Soyad1",
+--"maas" : 1000
+--}
+
+SELECT 
+*,
+JSON_VALUE(FormData,'$.adi') AS Adı,
+JSON_VALUE(FormData,'$.soyadi') AS Soyadı,
+JSON_VALUE(FormData,'$.maas') AS Maaş,
+JSON_VALUE(FormData,'$.telefonlar[0]') AS Telefon1,
+JSON_VALUE(FormData,'$.telefonlar[1]') AS Telefon2,
+JSON_VALUE(FormData,'$.adresler[0].satir1') AS Adres1Satir1,
+JSON_VALUE(FormData,'$.adresler[0].satir2') AS Adres1Satir2,
+JSON_VALUE(FormData,'$.adresler[0].postakodu') AS Adres1PostaKodu,
+JSON_VALUE(FormData,'$.adresler[0].ilce') AS Adres1İlçe,
+JSON_VALUE(FormData,'$.adresler[0].il') AS Adres1İl,
+JSON_VALUE(FormData,'$.adresler[1].satir1') AS Adres2Satir1,
+JSON_VALUE(FormData,'$.adresler[1].satir2') AS Adres2Satir2,
+JSON_VALUE(FormData,'$.adresler[1].postakodu') AS Adres2PostaKodu,
+JSON_VALUE(FormData,'$.adresler[1].ilce') AS Adres2İlçe,
+JSON_VALUE(FormData,'$.adresler[1].il') AS Adres2İl
+FROM Ogrenciler
+
+
+--{
+--"adi": "adi2",
+--"soyadi": "soyad2",
+--"maas" : 1000, 
+--	"telefonlar": [
+--		"009053422134",
+--		"009032853598",
+--		"009011111111",
+--		"009022222222"
+--	]
+--}
+
+SELECT value AS telno FROM Ogrenciler
+CROSS APPLY OPENJSON (FormData,'$.telefonlar')
+WHERE OgrenciID=2
+
+
+
+-------------------------
+
+
+{
+	"EmployeeData" : [
+		{
+			"firstname" : "Heater",
+			"lastname" : "Banks"
+		},
+		{
+			"firstname" : "Tina",
+			"lastname" : "Young"
+		}
+	]
+} 
+
+
+
+-----------------
